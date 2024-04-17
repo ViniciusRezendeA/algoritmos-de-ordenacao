@@ -166,6 +166,15 @@ class Acomodacao implements Comparator<Acomodacao>, Comparable<Acomodacao> {
         this.propertyType = propertyType;
     }
 
+
+    @Override
+    public String toString() {
+        return "Acomodacao [roomId=" + roomId + ", hostId=" + hostId + ", roomType=" + roomType + ", country=" + country
+                + ", city=" + city + ", neighbourhood=" + neighbourhood + ", reviews=" + reviews
+                + ", overallSatisfaction=" + overallSatisfaction + ", accommodates=" + accommodates + ", bedrooms="
+                + bedrooms + ", price=" + price + ", propertyType=" + propertyType + "]";
+    }
+
     @Override
     public int compare(Acomodacao a1, Acomodacao a2) {
         return Integer.compare(a1.getRoomId(), a2.getRoomId());
