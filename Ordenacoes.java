@@ -166,6 +166,15 @@ class Acomodacao implements Comparator<Acomodacao>, Comparable<Acomodacao> {
         this.propertyType = propertyType;
     }
 
+
+    @Override
+    public String toString() {
+        return "Acomodacao [roomId=" + roomId + ", hostId=" + hostId + ", roomType=" + roomType + ", country=" + country
+                + ", city=" + city + ", neighbourhood=" + neighbourhood + ", reviews=" + reviews
+                + ", overallSatisfaction=" + overallSatisfaction + ", accommodates=" + accommodates + ", bedrooms="
+                + bedrooms + ", price=" + price + ", propertyType=" + propertyType + "]";
+    }
+
     @Override
     public int compare(Acomodacao a1, Acomodacao a2) {
         return Integer.compare(a1.getRoomId(), a2.getRoomId());
@@ -220,7 +229,9 @@ public class Ordenacoes {
         pegarDadosDoArquivo();
         acomodacoes.sort(new Acomodacao());
 
-        SelecionarAcomodacoes();
+        selecionarAcomodacoes();
+
+        funcaoPrincipal();
 
     }
 
@@ -247,7 +258,7 @@ public class Ordenacoes {
 
     }
 
-    public static void SelecionarAcomodacoes() {
+    public static void selecionarAcomodacoes() {
         List<Acomodacao> newList = new ArrayList<>();
 
         Scanner scan = new Scanner(System.in);
@@ -265,4 +276,77 @@ public class Ordenacoes {
         acomodacoes = newList;
         scan.close();
     }
+
+    private static void funcaoPrincipal() {
+        //Metodos de ordenação:
+        // 1 - Bolha
+        // 2 - Select
+        // 3 - Insition
+        // 4 - Merge
+        // 5 - Quick
+        // 6 - Heap
+        Ordenar(1);
+
+        for (Acomodacao acomodacao : acomodacoes) {
+            System.out.println(acomodacao);
+        }
+    }
+
+    private static void Ordenar(int metodo) {
+        switch (metodo) {
+            case 1:
+
+                break;
+
+            case 2:
+
+                break;
+
+            case 3:
+
+                break;
+
+            case 4:
+
+                break;
+
+            case 5:
+
+                break;
+
+            case 6:
+
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+    public static void Bolha() {
+
+    }
+
+    public static void Select() {
+        
+    }
+
+    public static void Insertion() {
+        
+    }
+
+    public static void Merge() {
+        
+    }
+
+    public static void Quick() {
+        
+    }
+
+    public static void Heap() {
+        
+    }
+
+
+
 }
