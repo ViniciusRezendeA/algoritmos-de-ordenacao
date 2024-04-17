@@ -269,9 +269,7 @@ public class Ordenacoes {
             int roomId = scan.nextInt();
             int roomIndex = Collections.binarySearch(acomodacoes, new Acomodacao(roomId));
             newList.add(acomodacoes.get(roomIndex));
-        }
-
-        System.out.println(newList);
+        }        
         
         acomodacoes = newList;
         scan.close();
@@ -285,10 +283,11 @@ public class Ordenacoes {
         // 4 - Merge
         // 5 - Quick
         // 6 - Heap
-        Ordenar(1);
-
+       
+        Ordenar(4);
+        
         for (Acomodacao acomodacao : acomodacoes) {
-            System.out.println(acomodacao);
+            acomodacao.imprimir();
         }
     }
 
@@ -307,7 +306,7 @@ public class Ordenacoes {
                 break;
 
             case 4:
-
+                acomodacoes = Merge(acomodacoes);
                 break;
 
             case 5:
@@ -335,8 +334,39 @@ public class Ordenacoes {
         
     }
 
-    public static void Merge() {
-        
+    public static  List<Acomodacao> Merge( List<Acomodacao> acomodacoes) {
+        if (acomodacoes.size() == 1) {
+            return acomodacoes;
+        }
+        List<Acomodacao> part1 = new ArrayList<Acomodacao>();
+        List<Acomodacao> part2 = new ArrayList<Acomodacao>();
+        List<Acomodacao> result = new ArrayList<Acomodacao>();
+        for (int i = 0; i < (acomodacoes.size() / 2); i++) {
+            part1.add(acomodacoes.get(i));
+        }
+
+        for (int i = (acomodacoes.size() / 2); i < acomodacoes.size(); i++) {
+            part2.add(acomodacoes.get(i));
+
+        }
+
+        part1 = Merge(part1);
+        part2 = Merge(part2);
+
+        while (!part1.isEmpty() && !part2.isEmpty()) {
+            if (part1.getFirst().getHostId() < part2.getFirst().getHostId()) {
+                result.add(part1.removeFirst());
+            } else if (part1.getFirst().getHostId() > part2.getFirst().getHostId()) {
+                result.add(part2.removeFirst());
+            } else if (part1.getFirst().getRoomId() > part2.getFirst().getRoomId()) {
+                result.add(part2.removeFirst());
+            } else {
+                result.add(part1.removeFirst());
+            }
+        }
+        result.addAll(part1);
+        result.addAll(part2);
+        return result;
     }
 
     public static void Quick() {
